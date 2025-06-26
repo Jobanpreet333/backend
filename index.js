@@ -1,8 +1,9 @@
 const express = require("express")
 const dotenv = require("dotenv")
+const helmet = require("helmet")
 dotenv.config();
 const app = express();
-
+app.use(helmet());
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt")
 const cors = require("cors");
@@ -23,7 +24,10 @@ mongoose.connect("mongodb://localhost:27017/manage", {
     console.log("Error Occured");
 })
 
-app.use(cors())
+app.use(cors({
+  origin: 'https://frontend-tb32.vercel.app/',
+  credentials: true
+}));
 app.use(express.json());
 app.post("/", async (req, res) => {
     try {
