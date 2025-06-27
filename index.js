@@ -25,7 +25,7 @@ mongoose.connect("mongodb://localhost:27017/manage", {
 })
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://frontend-y3q9.vercel.app/',
   credentials: true
 }));
 app.use(express.json());
